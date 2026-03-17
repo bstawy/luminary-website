@@ -1,0 +1,456 @@
+/* =============
+   === RESET ===
+   ============= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =================
+   === VARIABLES ===
+   ================= */
+:root {
+  /* colors */
+  --bg: #080a0f;
+  --bg-2: #0d1017;
+  --bg-3: #111620;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --accent: #c8f542;
+  --accent-dim: rgba(200, 245, 66, 0.12);
+  --accent-glow: rgba(200, 245, 66, 0.25);
+  --text: #f0f2f5;
+  --text-2: #8a909e;
+  --text-3: #4a5060;
+
+  /* typography */
+  --font-display: "DM Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+
+  /* spacing */
+  --section-pad: clamp(80px, 10vw, 140px);
+  --container: min(100%, 1180px);
+
+  /* transitions */
+  --t-fast: 0.15s ease-out;
+  --t-med: 0.3s ease-out;
+  --t-slow: 0.6s ease-out;
+  --t-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(200, 245, 66, 0.15);
+}
+
+/* ==================
+   === ANIMATIONS ===
+   ================== */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.6);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============
+   === BASE ===
+   ============ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}
+
+/* ================
+   === Utilites ===
+   ================ */
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+.primary-btn {
+  border: none;
+  background-color: var(--accent);
+  color: var(--bg);
+  transform-origin: center bottom;
+  transition:
+    transform var(--t-bounce),
+    box-shadow var(--t-med);
+}
+
+.primary-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.secondary-btn {
+  border: 1px solid var(--border-hover);
+  background-color: transparent;
+  color: var(--text);
+  font-weight: 500;
+  transition:
+    border-color var(--t-med),
+    background-color var(--t-med),
+    transform var(--t-bounce);
+}
+
+.secondary-btn:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-dim);
+  transform: translateY(-3px);
+}
+
+/* ==============
+   === HEADER ===
+   ============== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--t-med),
+    border-color var(--t-med),
+    padding var(--t-med);
+}
+
+header.scrolled {
+  background-color: rgba(8, 10, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  padding: 14px 0;
+}
+
+header .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ====== Logo ====== */
+header .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+header .logo .logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+header .logo .logo-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ====== Navigation Links ====== */
+header nav ul {
+  display: none;
+  list-style: none;
+  gap: 36px;
+}
+
+header nav ul a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-2);
+  transition: color var(--t-fast);
+  position: relative;
+}
+
+header nav ul a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width var(--t-med);
+}
+
+header nav ul a:hover {
+  color: var(--text);
+}
+
+header nav ul a:hover::after {
+  width: 100%;
+}
+
+/* ====== Hamburger ====== */
+header .hamburger {
+  width: 28px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+header .hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text);
+  border-radius: 999px;
+  transition: width var(--t-med);
+}
+
+header .hamburger span:nth-child(2) {
+  width: 65%;
+}
+
+header .hamburger:hover span:nth-child(2) {
+  width: 100%;
+}
+
+/* ====== Button ====== */
+header .primary-btn {
+  display: none;
+  background-color: var(--accent);
+  color: var(--bg);
+  transform-origin: center bottom;
+  transition:
+    transform var(--t-bounce),
+    box-shadow var(--t-med);
+}
+
+header .primary-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ==============
+   === HERO ===
+   ============== */
+.hero {
+  min-height: 100vh;
+  padding: 120px 0 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ====== Background Grid ====== */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* shorthand for top: 0; bottom: 0; left:0; right:0; */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+}
+
+/* ====== Accent Glow BLob ====== */
+.hero::after {
+  content: "";
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  background: radial-gradient(
+    circle,
+    rgba(200, 245, 66, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ====== Eyebrow ====== */
+.hero .eyebrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: slide-right 0.7s ease-out both;
+}
+
+.hero .eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+/* ====== Title ====== */
+.hero .title {
+  margin-bottom: 28px;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  animation: fade-up 0.8s ease-out 0.1s both;
+}
+
+.hero .title .dimmed-text {
+  color: var(--text-2);
+}
+
+.hero .title .accented-text {
+  color: var(--accent);
+}
+
+/* ====== Description ====== */
+.hero .description {
+  max-width: 520px;
+  margin-bottom: 48px;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.7;
+  color: var(--text-2);
+  animation: fade-up 0.8s ease-out 0.2s both;
+}
+
+/* ====== Actions ====== */
+.hero .actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  animation: fade-up 0.8s ease-out 0.3s both;
+}
+
+/* =====================
+   === MEDIA QUERIES ===
+   ===================== */
+@media (min-width: 640px) {
+  header nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  header .hamburger {
+    display: none;
+  }
+
+  header .primary-btn {
+    display: flex;
+  }
+}
