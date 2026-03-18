@@ -20,12 +20,14 @@
   </head>
   <body>
     <!-- ===================== HEADER ===================== -->
-    <header>
+    <header id="main-header">
       <div class="container">
+        <!-- Logo -->
         <div class="logo">
           <div class="logo-dot"></div>
           <span class="logo-title">Luminary</span>
         </div>
+        <!-- Navigation Bar -->
         <nav>
           <ul>
             <li><a href="#services">Services</a></li>
@@ -34,31 +36,37 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+        <!-- Hamburger Menu -->
         <button class="hamburger" aria-label="Open navigation menu">
           <span></span>
           <span></span>
           <span></span>
         </button>
+        <!-- CTA Button -->
         <a href="#contact" class="btn primary-btn">Start a project</a>
       </div>
     </header>
     <main>
       <!-- ===================== HERO ===================== -->
-      <section class="hero">
+      <section id="hero" class="hero">
         <div class="container">
+          <!-- Eyebrow -->
           <div class="eyebrow">we build digital products</div>
+          <!-- Headline -->
           <h1 class="title">
             We craft<br />
             <span class="dimmed-text">digital</span>
             <span class="accented-text">experiences</span><br />
             <span class="dimmed-text">that matter.</span>
           </h1>
+          <!-- Description -->
           <p class="description">
             A full-service digital agency helping ambitious brands grow through
             strategy, design, and cutting-edge technology.
           </p>
+          <!-- Action Buttons -->
           <div class="actions">
-            <a href="" class="btn primary-btn">
+            <a href="#work" class="btn primary-btn">
               View our work
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
@@ -70,10 +78,70 @@
                 ></path>
               </svg>
             </a>
-            <a href="" class="btn secondary-btn"> "Get in touch" </a>
+            <a href="#contact" class="btn secondary-btn"> Get in touch </a>
+          </div>
+          <!-- Stats -->
+          <div class="stats">
+            <div class="item">
+              <div class="number">120<span>+</span></div>
+              <div class="label">Projects delivered</div>
+            </div>
+            <div class="item">
+              <div class="number">8<span>+</span></div>
+              <div class="label">Years in business</div>
+            </div>
+            <div class="item">
+              <div class="number">98<span>%</span></div>
+              <div class="label">Client satisfaction</div>
+            </div>
           </div>
         </div>
       </section>
+      <!-- ===================== MARQUEE ===================== -->
+      <div class="marquee-section">
+        <div class="marquee-track">
+          <div class="item"><span class="dot"></span> Strategy</div>
+          <div class="item"><span class="dot"></span> Branding</div>
+          <div class="item"><span class="dot"></span> Web Design</div>
+          <div class="item"><span class="dot"></span> Mobile Apps</div>
+          <div class="item"><span class="dot"></span> UI/UX Design</div>
+          <div class="item"><span class="dot"></span> Development</div>
+          <div class="item"><span class="dot"></span> SEO & Growth</div>
+          <!-- duplicated for seamless looping -->
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> Strategy
+          </div>
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> Branding
+          </div>
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> Web Design
+          </div>
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> Mobile Apps
+          </div>
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> UI/UX Design
+          </div>
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> Development
+          </div>
+          <div class="item" aria-hidden="true">
+            <span class="dot"></span> SEO & Growth
+          </div>
+        </div>
+      </div>
     </main>
+    <script>
+      // sticky header on scroll
+      var header = document.getElementById("main-header");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 40) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
