@@ -27,7 +27,7 @@
           <div class="logo-dot"></div>
           <a href="#hero" class="logo-title">Luminary</a>
         </div>
-        <!-- Navigation Bar -->
+        <!-- Desktop Navigation Bar -->
         <nav>
           <ul>
             <li><a href="#services">Services</a></li>
@@ -45,6 +45,15 @@
         <!-- CTA Button -->
         <a href="#contact" class="btn primary-btn">Start a project</a>
       </div>
+      <!-- Mobile Navigation Bar -->
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
@@ -354,17 +363,7 @@
 
     <!-- ===================== Scripts ===================== -->
     <script>
-      /* sticky header */
-      var header = document.getElementById("main-header");
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 40) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      /* scroll reveal */
+      /*----- scroll reveal -----*/
       var observer = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
@@ -381,6 +380,46 @@
 
       document.querySelectorAll(".reveal").forEach(function (el) {
         observer.observe(el);
+      });
+
+      /*----- sticky header -----*/
+      var header = document.getElementById("main-header");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 40) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      /*----- mobile menu toggle -----*/
+      var hamburger = document.querySelector(".hamburger");
+      var mobileNav = document.querySelector(".mobile-nav");
+
+      hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("open");
+        mobileNav.classList.toggle("open");
+        var isOpen = hamburger.classList.contains("open");
+        hamburger.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu",
+        );
+      });
+
+      mobileNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          hamburger.classList.remove("open");
+          mobileNav.classList.remove("open");
+          hamburger.setAttribute("aria-label", "Open navigation menu");
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!header.contains(e.target)) {
+          hamburger.classList.remove("open");
+          mobileNav.classList.remove("open");
+          hamburger.setAttribute("aria-label", "Open navigation menu");
+        }
       });
     </script>
   </body>
