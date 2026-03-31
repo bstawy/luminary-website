@@ -1,0 +1,90 @@
+.projects {
+  padding: var(--section-pad) 0;
+  background-color: var(--bg-2);
+}
+
+.projects-header {
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.projects .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.projects .grid .card {
+  background-color: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition:
+    transform var(--t-med),
+    border-color var(--t-med),
+    box-shadow var(--t-med);
+}
+
+.projects .grid .card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px rgba(200, 245, 66, 0.1);
+}
+
+.projects .grid .card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.projects .grid .card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.projects .grid .card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.projects .grid .card .thumb {
+  aspect-ratio: 16/9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 48px;
+  overflow: hidden;
+}
+
+.projects .grid .card .thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, var(--bg-3));
+}
+
+.projects .grid .card .body {
+  padding: 24px;
+}
+
+.projects .grid .card .body .tags {
+  margin-bottom: 14px;
+}
+
+.projects .grid .card .body .title {
+  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.projects .grid .card .body .description {
+  margin-bottom: 20px;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
