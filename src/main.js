@@ -11,8 +11,10 @@ import "./features/02.hero/hero.css";
 import "./features/03.marquee/marquee.css";
 import "./features/04.services/services.css";
 import "./features/05.projects/projects.css";
+import "./features/06.about/about.css";
 
 // 2. Import your Logic
+import "./shared/js/utilities.js";
 import "./features/01.header/header.js";
 // import "./features/02.hero/hero.js";
 // import "./features/03.marquee/marquee.js";

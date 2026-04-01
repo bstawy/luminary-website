@@ -60,7 +60,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/*    */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
