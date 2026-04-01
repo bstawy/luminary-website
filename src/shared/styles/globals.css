@@ -1,0 +1,14 @@
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container {
+  width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}

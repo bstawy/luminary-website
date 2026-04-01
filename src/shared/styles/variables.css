@@ -1,0 +1,38 @@
+:root {
+  /* colors */
+  --bg: #080a0f;
+  --bg-2: #0d1017;
+  --bg-3: #111620;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --accent: #c8f542;
+  --accent-dim: rgba(200, 245, 66, 0.12);
+  --accent-glow: rgba(200, 245, 66, 0.25);
+  --text: #f0f2f5;
+  --text-2: #8a909e;
+  --text-3: #4a5060;
+
+  /* gradients */
+  --grad-blue: linear-gradient(135deg, #1a1060 0%, #0d2060 100%);
+  --grad-purple: linear-gradient(135deg, #1a0820 0%, #3a1040 100%);
+  --grad-green: linear-gradient(135deg, #001a18 0%, #002a20 100%);
+
+  /* typography */
+  --font-display: "DM Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+
+  /* spacing */
+  --section-pad: clamp(80px, 10vw, 140px);
+  --container: min(100%, 1180px);
+
+  /* transitions */
+  --t-fast: 0.15s ease-out;
+  --t-med: 0.3s ease-out;
+  --t-slow: 0.6s ease-out;
+  --t-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(200, 245, 66, 0.15);
+}

@@ -1,0 +1,217 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--t-med),
+    border-color var(--t-med),
+    padding var(--t-med);
+}
+
+header.scrolled {
+  background-color: rgba(8, 10, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  padding: 14px 0;
+}
+
+header .container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ====== Logo ====== */
+header .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+header .logo .logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+header .logo .logo-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ====== Navigation Bars ====== */
+
+/* ====== Desktop Navigation Bar ====== */
+
+header nav ul {
+  display: none;
+  list-style: none;
+  gap: 36px;
+}
+
+header nav ul a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-2);
+  transition: color var(--t-fast);
+  position: relative;
+}
+
+header nav ul a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width var(--t-med);
+}
+
+header nav ul a:hover {
+  color: var(--text);
+}
+
+header nav ul a:hover::after {
+  width: 100%;
+}
+
+/* ====== Mobile Navigation Bar ====== */
+.mobile-nav {
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(8, 10, 15, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateY(-8px);
+  transition:
+    visibility var(--t-med),
+    opacity var(--t-med),
+    max-height var(--t-med),
+    padding var(--t-med),
+    transform var(--t-med);
+  pointer-events: none;
+}
+
+.mobile-nav.open {
+  visibility: visible;
+  opacity: 1;
+  max-height: 400px;
+  padding: 8px 0 12px 0;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobile-nav ul {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 0;
+}
+
+.mobile-nav ul li a {
+  padding: 14px 0;
+  display: block;
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-2);
+  transition: color var(--t-fast);
+}
+
+.mobile-nav ul li:last-child a {
+  border-bottom: none;
+}
+.mobile-nav ul li a:hover {
+  color: var(--accent);
+}
+
+/* ====== Hamburger Menu ====== */
+header .hamburger {
+  width: 28px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+header .hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text);
+  border-radius: 999px;
+  transition:
+    width var(--t-med),
+    transform var(--t-med),
+    opacity var(--t-med);
+}
+
+header .hamburger span:nth-child(2) {
+  width: 65%;
+}
+
+header .hamburger:hover span:nth-child(2) {
+  width: 100%;
+}
+
+/* X state */
+header .hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+header .hamburger.open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+header .hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+/* ====== CTA Button ====== */
+header .btn {
+  display: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  header nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  header .mobile-nav {
+    display: none;
+  }
+
+  header .hamburger {
+    display: none;
+  }
+
+  header .btn {
+    display: flex;
+  }
+}
