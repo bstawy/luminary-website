@@ -3,11 +3,11 @@ name: Deploy Static Website
 on:
   push:
     branches:
-      - master  # Triggers on every push to master
+      - master
 
 jobs:
   deploy:
-    name: 🚀 Build & Deploy to GitHub Pages
+    name: 🚀 Build & Deploy
     runs-on: ubuntu-latest
 
     permissions:
@@ -22,10 +22,23 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 📤 Upload GitHub Pages Artifact
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🏗️ Build Project
+        run: npm run build
+
+      - name: 📤 Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'   # Upload everything from the root
+          # Upload only the 'dist' directory produced by Vite
+          path: './dist'
 
       - name: 🌍 Deploy to GitHub Pages
         id: deployment
