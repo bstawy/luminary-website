@@ -19,6 +19,7 @@
   "type": "commonjs",
   "devDependencies": {
     "vite": "^8.0.3",
-    "vite-plugin-html": "^3.2.2"
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-html-inject": "^1.1.2"
   }
 }
